@@ -14,7 +14,8 @@ public class NameCity {
 
         TextLinks nameCity = TextLinks.NAMECITY;
         WebElement clickName = driver.findElement(By.cssSelector(nameCity.getString()));
-        clickName.click();
+        if (clickName.isDisplayed())
+            clickName.click();
 
     }
 }

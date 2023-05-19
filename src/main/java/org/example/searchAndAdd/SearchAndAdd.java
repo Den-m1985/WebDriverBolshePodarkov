@@ -2,10 +2,12 @@ package org.example.searchAndAdd;
 
 import org.example.browser.chrome.DriverChromeSingleton;
 import org.example.csvRead.csv.StructureCSV;
+import org.example.searchAndAdd.addGood.AddGood;
+import org.example.searchAndAdd.checkGood.CheckPrice;
+import org.example.searchAndAdd.checkGood.GetPrice;
+import org.example.searchAndAdd.search.ClickInSearch;
 import org.example.searchAndAdd.search.SearchGoods;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,41 +24,38 @@ public class SearchAndAdd {
             String goodsName = goods.getName();
             String goodsSize = goods.getArtucul();
             int intGoodsPrice = goods.getPrice();
-            int goodsItem = goods.getItem();
+            String goodsItem = String.valueOf(goods.getItem());
+
+            System.out.println("goodsItem--" + goodsItem);
 
             try {
 
-                new SearchGoods(goodsName);
+                new SearchGoods(goodsSize);
 
+                // Если товара нет в наличии
+//                boolean availability = new CheckAvailability().CheckSubScribe();
+//                System.out.println(availability);
+//                if (availability) {
+//                    String[] noAdd = {goodsName, "Товара нет в наличии"};
+//                    errorSearch.add(noAdd);
+//                    break;
+//                }
 
-                // находим несколько имен в поисковике
-                //List<WebElement> products = driver.findElements(By.className("products"));
+                //new ClickInSearch();
 
-                // проверяем на наличие товара
-                //List<WebElement> product = driver.findElements(By.className("product"));
+                String getPrice = new GetPrice().getPrice();
+                System.out.println("Цена в прайсе--" + intGoodsPrice + "--Цена на сайте" + getPrice);
 
-                // проверяем на ниличие выбора размера
-                //List<WebElement> size = driver.findElements(By.className("b1c_option"));
-
-
-//        if (products.size() > 0) {
-//
-//                CheckPrice check = new CheckPrice(driver, intGoodsPrice);
-//                if (check.checkPrice()) {
-//                    addGoods.addGoods(goodsItem, driver);  // товар найден, добавляем в корзину
-//                    new ClowdWindow(driver);
-//                } else reportList.add(check.getErrorPrice(goodsName));
-//            }
-//         else {
-//            String[] noFind = {goodsName, "товар НЕ найден"};
-//            reportList.add(noFind);
-//        }
+                CheckPrice check = new CheckPrice();
+                boolean bool = check.checkPrice(intGoodsPrice, getPrice);
+                if (bool) {
+                    new AddGood(goodsItem);
+                } else errorSearch.add(check.getErrorPrice(goodsName));
 
 
 
 
             } catch (Exception e) {
-                //System.out.println("Произошла ошибка: " + e.getMessage());
                 String[] noAdd = {goodsName, "Какая-то общая ошибка"};
                 errorSearch.add(noAdd);
             }

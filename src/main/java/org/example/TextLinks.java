@@ -9,11 +9,14 @@ public enum TextLinks {
     NAMECITY("#bxmaker__geoip__city__line-id > div > div.bxmaker__geoip__city__line-question.js-bxmaker__geoip__city__line-question > div.bxmaker__geoip__city__line-question-btn-box > div.bxmaker__geoip__city__line-question-btn-yes.js-bxmaker__geoip__city__line-question-btn-yes"),
     SEARCHFIELD("#-input-1"),  //поле поиска
     BUTTONSEARCH("#i-4-bitrix-search-title-input-1-XdqEv16rajmu > div > form > div > div.intec-grid-item-auto > button > i"),  //поле кнопки поска
-    ADDITEM("//*[@id=\"content\"]/div/div[2]/form/div/div[1]/span[1]/input"),  //поле добавить кол-во
+    CLICKINSEARCH("catalog-section-item-wrapper"),  // поле выбора товара в поиске
+    SUBSCRIBE("i-15-bitrix-catalog-section-catalog-tile-3-OQ3k9PHlVICg_subscribe_2301"),  // поле отсутствия товара
+    //PRICE("catalog-element-price-discount"),  // поле цены
+    PRICE("catalog-section-item-price-discount"),  // поле цены
+    ADDITEM("intec-ui-part-input"),  //поле добавить кол-во
     SIZE("//*[@id=\"content\"]/div/div[2]/form/div/select"),  //поле выбра размера
-    CLICKBAY("//*[@id=\"content\"]/div/div[2]/form/div/input"),  //поле добавить в корзину
+    CLICKBAY("catalog-section-item-purchase-buttons"),  //поле добавить в корзину
     CLOSEWINDOW("//*[@id=\"fancybox-close\"]"),  //закрыть всплывающее окно
-    PRICE("#content > div > div.description > form > div > div.price > span.price"),  // поле цены
     FIELDCART("//*[@id=\"cart_informer\"]"),  // поле открыть корзину.
     OPENFILEPATH("Desktop"),  //открываем папку по умолчанию
     SAVEFILEPATH("Downloads"),  //сохраняем папку по умолчанию

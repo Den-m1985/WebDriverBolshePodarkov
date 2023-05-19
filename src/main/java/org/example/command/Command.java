@@ -4,6 +4,7 @@ import org.example.browser.chrome.LoginPage;
 import org.example.browser.OpenWebSite;
 import org.example.csvRead.CsvFilter;
 import org.example.csvRead.csv.StructureCSV;
+import org.example.oldExel.WrightOldExelArticul;
 import org.example.searchAndAdd.SearchAndAdd;
 import org.example.searchAndAdd.search.NameCity;
 
@@ -39,7 +40,7 @@ public class Command {
 
         System.out.println(reportList.size() + "   Размер отчета");
 
-        //new WrightOldExelArticul(reportList);
+        new WrightOldExelArticul(reportList);
 
         long end = System.nanoTime();
         long a = end - start;
