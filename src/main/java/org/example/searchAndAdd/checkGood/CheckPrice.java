@@ -1,29 +1,25 @@
 package org.example.searchAndAdd.checkGood;
 
-import org.example.TextLinks;
-import org.example.browser.chrome.XPathWait;
-import org.openqa.selenium.WebElement;
-
 public class CheckPrice {
-    int procent;
+    int percent;
 
     public CheckPrice() {
     }
 
-    public boolean checkPrice(int intGoodsPrice, String priceWeb) {
+    public boolean checkPrice(int csvPrice, String webPrice) {
 
-        int intPriceWeb = Integer.parseInt(priceWeb);
+        int intWebPrice = Integer.parseInt(webPrice);
 
-        procent = (intPriceWeb * 100) / intGoodsPrice;
-        System.out.println("procent--" + procent);
-        if (procent < 101) {
+        percent = (intWebPrice * 100) / csvPrice;
+        if (percent < 101) {
             return true;
         }
         return false;
     }
 
 
-    public String[] getErrorPrice(String goodsName) {
-        return new String[]{goodsName, "цена на сайте больше на " + procent + "%"};
+    public String[] getErrorPrice(String goodsName,  String csvArticular) {
+        return new String[]{goodsName, csvArticular, "цена на сайте больше на " + percent + "%"};
     }
+
 }

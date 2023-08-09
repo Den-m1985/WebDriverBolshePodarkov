@@ -1,27 +1,38 @@
 package org.example.searchAndAdd.checkGood;
 
 import org.example.TextLinks;
-import org.example.browser.chrome.DriverChromeSingleton;
+import org.example.browser.chrome.DriverChrome;
 import org.example.browser.chrome.XPathWait;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class CheckAvailability {
 
 
-
-    public boolean CheckSubScribe() {
-        XPathWait pathWait = new XPathWait();
-        WebDriver driver = DriverChromeSingleton.getChromeDriver();
-
-        TextLinks LinksSearch = TextLinks.SUBSCRIBE;
-        //WebElement search = driver.findElement(By.className(LinksSearch.getString()));
-        WebElement subScribe = pathWait.xPathClassName(LinksSearch.getString());
-        System.out.println(subScribe.getText());
-//        if (subScribe.isDisplayed()) {
-//            System.out.println("Подписаться на товар");
-//            return true;
-//        }
-        return false;
+    public boolean checkGoodsPresent() {
+        //XPathWait pathWait = new XPathWait();
+        WebDriver driver = DriverChrome.getChromeDriver();
+        String noFind = TextLinks.NOGOODS.getString();
+        try {
+             driver.findElement(By.className(noFind));
+            //pathWait.xPathClassName(noFind);
+             return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
+
+
+    public boolean isPresentButtonToCart(){
+        WebDriver driver = DriverChrome.getChromeDriver();
+        //String subscribeString = TextLinks.SUBSCRIBE.getString();
+        String toBasketString = TextLinks.TOBASKET.getString();
+        try {
+            driver.findElement(By.xpath(toBasketString));
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
 }

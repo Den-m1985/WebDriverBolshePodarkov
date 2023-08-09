@@ -17,8 +17,8 @@ public class OnlyGoods {
         for (String[] row : rows) {
             // Бывает, что в исходнике некорректно сделана структура, эти позиции отправляются в итоговый отчет.
             try {
-                int wrong = row[4].length();
-                if (wrong > 0) {
+                //int wrong = row[4].length();
+                if (row[4].length() > 0) {
                     String[] error = {row[0], "Неверный формат CSV"};
                     reportCSV.add(error);
                 }

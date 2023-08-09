@@ -1,19 +1,14 @@
 package org.example.browser;
 
-import org.example.TextLinks;
-import org.example.browser.chrome.DriverChromeSingleton;
+import org.example.browser.chrome.DriverChrome;
 import org.openqa.selenium.WebDriver;
 
 public class OpenWebSite {
 
-    public OpenWebSite() {
+    public OpenWebSite(String webAddress) {
+        WebDriver driver = DriverChrome.getChromeDriver();
 
-        WebDriver driver = DriverChromeSingleton.getChromeDriver();
-
-
-        TextLinks textLinks = TextLinks.ADDRESS;
-        driver.get(textLinks.getString());
+        driver.get(webAddress);
     }
-
 
 }

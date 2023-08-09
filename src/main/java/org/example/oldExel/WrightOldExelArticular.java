@@ -9,29 +9,27 @@ import org.example.oldExel.createWrite.WriteOldExel;
 import java.util.Comparator;
 import java.util.List;
 
-public class WrightOldExelArticul {
-    public WrightOldExelArticul( List<String[]> list) {
+public class WrightOldExelArticular {
 
+    public WrightOldExelArticular(List<String[]> list) {
+        int celSize = list.get(0).length;
         list.sort(new Comparator<String[]>() {
             @Override
             public int compare(String[] o1, String[] o2) {
-                return o1[1].compareTo(o2[1]);
+                return o1[celSize-1].compareTo(o2[celSize-1]);
             }
         });
 
         //create no find article
-        CreateOldExel createOldExel = new CreateOldExel();
-        HSSFWorkbook workbook2 = createOldExel.createOldExel(list);
+        HSSFWorkbook workbook = new CreateOldExel().createOldExel(list);
 
-        // создаем имя файла
+        // create file name
         CreatePathFile createPathFile = new CreatePathFile();
+        //write no find article, xls file in downloads directory
+        String fileName = TextLinks.FILENAMESAVE.getString();
+        String downloadsPath = createPathFile.createPathFile(fileName, "xls");
 
-        //write no find article, xls file in downloads
-        TextLinks fileName = TextLinks.FILENAMESAVE;
-        String downloadsPath = createPathFile.createPathFile(fileName.getString(), "xls");
-
-        WriteOldExel writeOldExel2 = new WriteOldExel(workbook2, downloadsPath);
-        writeOldExel2.writeCellExel();
+        new WriteOldExel(workbook, downloadsPath);
 
         System.out.println();
         TextLinks textLinks = TextLinks.TEXTSAVEFILE;

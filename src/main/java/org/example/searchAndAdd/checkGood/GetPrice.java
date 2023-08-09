@@ -8,13 +8,14 @@ public class GetPrice {
 
     public String getPrice() {
         XPathWait pathWait = new XPathWait();
-        //WebDriver driver = DriverChromeSingleton.getChromeDriver();
+        //WebDriver driver = DriverChrome.getChromeDriver();
 
-        TextLinks LinksSearch = TextLinks.PRICE;
-        WebElement price = pathWait.xPathClassName(LinksSearch.getString());
+        String LinksSearch = TextLinks.PRICE.getString();
+        WebElement price = pathWait.xPathClassName(LinksSearch);
         String str = price.getText();
         String[] strArray = str.split(" ");
 
         return strArray[0].trim();
     }
+
 }

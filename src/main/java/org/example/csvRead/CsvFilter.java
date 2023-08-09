@@ -36,9 +36,8 @@ public class CsvFilter {
         List<StructureCSV> resolveDuplicatedNames = new DuplicateGoods().duplicateGoods(duplicateNames);
         uniqueValues.addAll(resolveDuplicatedNames);
 
-        TextLinks textLinks = TextLinks.COUNROWSCSV;
-        System.out.println();
-        System.out.println(textLinks.getString() + uniqueValues.size());
+        String textLinks = TextLinks.COUNROWSCSV.getString();
+        System.out.println(textLinks + uniqueValues.size());
 
         return uniqueValues;
     }

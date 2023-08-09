@@ -13,14 +13,15 @@ public class AddGood {
         XPathWait pathWait = new XPathWait();
         WebDriver driver = DriverChromeSingleton.getChromeDriver();
 
-        TextLinks linkString = TextLinks.ADDITEM;
-        WebElement elementLocator = pathWait.xPathClassName(linkString.getString());
+        String linkString = TextLinks.ADDITEM.getString();
+        WebElement elementLocator = pathWait.xPathClassName(linkString);
+
         Actions actions = new Actions(driver);
         actions.doubleClick(elementLocator).perform();
         elementLocator.sendKeys(goodsItem);
 
-        TextLinks linkAddItem = TextLinks.CLICKBAY;
-        WebElement linkButton = pathWait.xPathClassName(linkAddItem.getString());
+        String linkAddItem = TextLinks.CLICKBAY.getString();
+        WebElement linkButton = pathWait.xPathClassName(linkAddItem);
         linkButton.click();
 
     }

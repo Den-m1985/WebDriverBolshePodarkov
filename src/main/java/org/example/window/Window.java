@@ -14,7 +14,7 @@ public class Window extends JFrame {
 
     public Window() throws UnsupportedEncodingException {
         setTitle("     Bolshe Podarkov");
-        setSize(500, 500);
+        setSize(600, 600);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

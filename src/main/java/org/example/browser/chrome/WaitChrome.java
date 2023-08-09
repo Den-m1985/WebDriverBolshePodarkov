@@ -5,16 +5,17 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class WaitChrome extends DriverChromeSingleton {
+public class WaitChrome {
 
     private static WebDriverWait wait;
 
     public static synchronized WebDriverWait getChromeDriverWait() {
         if (wait == null) {
             Duration duration = Duration.ofSeconds(10);
-            WebDriver driver = DriverChromeSingleton.getChromeDriver();
+            WebDriver driver = DriverChrome.getChromeDriver();
             wait = new WebDriverWait(driver, duration);
         }
         return wait;
     }
+
 }

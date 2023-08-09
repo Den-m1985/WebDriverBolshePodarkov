@@ -1,14 +1,13 @@
 package org.example.window.helper_classes;
 
-import com.opencsv.exceptions.CsvException;
 import org.example.TextLinks;
 //import org.example.command.Command;
+import org.example.controller.Controller;
 import org.example.createPathFile.GetPathFile;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 public class StartCommand implements ActionListener {
 
@@ -34,10 +33,9 @@ public class StartCommand implements ActionListener {
         System.out.println(pathCSV);
         System.out.println();
 
-        //Command command = new Command();
 
         try {
-            //command.startProgram(pathCSV);
+            new Controller(pathCSV);
 
         } catch (Exception ex) {
             throw new RuntimeException(ex);
