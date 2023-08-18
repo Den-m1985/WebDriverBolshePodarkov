@@ -10,17 +10,14 @@ public class CreatePathFile {
     }
 
 
-    public String  createPathFile (String fileName, String extension){
-
+    public String createPathFile(String fileName, String extension) {
         Date date = new Date();
         String str = date.currentDate();
 
-        TextLinks textLinks = TextLinks.SAVEFILEPATH;
-        String defaultFolder = textLinks.getString();
+        String defaultFolder = TextLinks.SAVEFILEPATH.getString();
 
         return System.getProperty("user.home") + File.separator +
-                defaultFolder+"\\" + fileName + "_" + str + "." + extension;
+                defaultFolder + File.separator + fileName + "_" + str + "." + extension;
     }
-
 
 }

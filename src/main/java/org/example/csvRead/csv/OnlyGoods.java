@@ -1,28 +1,26 @@
 package org.example.csvRead.csv;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class OnlyGoods {
     private List<String[]> reportCSV;
 
-    public OnlyGoods() {
-    }
 
-    public List<StructureCSV> onlyGoods(List<String[]> rows, int cellPrice, int cellItem) {
+    public List<StructureCSV> onlyGoods(List<String[]> rows, LinkedHashMap<String, Integer>cellCSV) {
+        int cellPrice = cellCSV.get("Цена");
+        int cellItem = cellCSV.get("Количество");
 
         List<StructureCSV> dataWithItem = new ArrayList<>();
         reportCSV = new ArrayList<>();
-
         for (String[] row : rows) {
             // Бывает, что в исходнике некорректно сделана структура, эти позиции отправляются в итоговый отчет.
             try {
-                //int wrong = row[4].length();
                 if (row[4].length() > 0) {
                     String[] error = {row[0], "Неверный формат CSV"};
                     reportCSV.add(error);
                 }
-
                 // Если в ячейке price и item число, то эту строку добавляем для дальнейшей работы.
                 if (isFigure(row[cellItem]) && isFigure(row[cellPrice])) {
                     int price = floatToInt(row[cellPrice]);
@@ -52,6 +50,7 @@ public class OnlyGoods {
         }
     }
 
+
     static int floatToInt(String str) {
         if (str.contains(",")) {
             String str2 = str.replace(",", ".");
@@ -59,6 +58,5 @@ public class OnlyGoods {
         }
         return (int) Float.parseFloat(str);
     }
-
 
 }

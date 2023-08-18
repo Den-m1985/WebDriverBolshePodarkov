@@ -9,13 +9,11 @@ import org.openqa.selenium.WebElement;
 public class NameCity {
 
     public NameCity() {
-
         WebDriver driver = DriverChrome.getChromeDriver();
-
         String nameCity = TextLinks.NAMECITY.getString();
-        WebElement clickName = driver.findElement(By.cssSelector(nameCity));
+        WebElement clickName = driver.findElement(By.xpath(nameCity));
         if (clickName.isDisplayed())
             clickName.click();
-
     }
+
 }

@@ -2,9 +2,8 @@ package org.example.searchAndAdd;
 
 import org.example.TextLinks;
 import org.example.browser.chrome.DriverChrome;
-import org.example.browser.chrome.XPathWait;
-import org.example.searchAndAdd.search.NameCity;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -14,13 +13,21 @@ import java.util.List;
 public class Basket {
     private WebDriver driver = DriverChrome.getChromeDriver();
 
+
     public Basket() {
         String basket = TextLinks.BASKETADDRESS.getString();
         driver.get(basket);
+        // если в корзине что-то есть запрашиваем дальнейшее дествие
         if (checkBasket() != 0) {
-            int option = showDialog();
+            int option = dialogClearBasket();
             if (option == 0) {
                 clearBasket();
+                // проверяем очистил ли корзину?
+                if (checkBasket() != 0) {
+                    int errorOption = dialogErrorBasket();
+                    if (errorOption == 0)
+                        DriverChrome.getChromeDriver().close();
+                }
             }
         } else {
             String basketEmpty = TextLinks.BASKETEMPTY.getString();
@@ -37,46 +44,38 @@ public class Basket {
 
 
     public void clearBasket() {
-        String clear = TextLinks.CLEARBASKET.getString();
-        //driver.findElement(By.className(clear)).click();
+       /*
+       выполняем JavaScript-скрипт с использованием `JavascriptExecutor`
+       чтобы прокрутить страницу до кнопки. Затем снова вызываем метод `click()`
+       для удаления товаров из корзины.
+       */
+        String clearBasket = TextLinks.CLEARBASKET.getString();
+        WebElement removeItemButton = driver.findElement(By.xpath(clearBasket));
 
-        new NameCity();
-        //WebElement c = driver.findElement(By.className("basket-items-panel-buttons"));
-        //c.click();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();", removeItemButton);
+        removeItemButton.click();
 
-        int count = 5;
-        while (count > 0) {
-//            try {
-//                WebElement c = driver.findElement(By.className("basket-items-panel-buttons"));
-//                c.click();
-//                System.out.println("1");
-//            } catch (Exception e) {
-//            }
-//            try {
-//                XPathWait pathWait = new XPathWait();
-//                WebElement c = pathWait.xPathClassName("basket-items-panel-buttons");
-//                c.click();
-//                System.out.println("2");
-//            } catch (Exception e) {
-//            }
-            try {
-                WebElement removeItemButton = driver.findElement(By.xpath("//span[contains(text(),'Очистить корзину')]"));
-                if (removeItemButton != null) {
-                    // Если товары есть в корзине, выполняем действия для удаления
-                    // Нажатие на кнопку "Удалить"
-                    removeItemButton.click();
-                }
-                    System.out.println("3");
-            } catch (Exception e) {
-            }
-            count--;
-        }
     }
 
 
-    private int showDialog() {
+    private int dialogClearBasket() {
         // Создаем массив с текстом кнопок
         Object[] options = {"Очистить корзину", "Оставить"};
+        String text = "В корзине есть товары";
+
+        // Отображаем окно с двумя кнопками
+        int result = JOptionPane.showOptionDialog(null, text, "Вопрос",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null, options, options[0]);
+        return result;
+    }
+
+
+    private int dialogErrorBasket() {
+        // Создаем массив с текстом кнопок
+        Object[] options = {"Попробовать снова", "Продолжить"};
         String text = "В корзине есть товары";
 
         // Отображаем окно с двумя кнопками

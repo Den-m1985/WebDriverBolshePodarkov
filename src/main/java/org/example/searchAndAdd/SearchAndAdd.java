@@ -31,16 +31,12 @@ public class SearchAndAdd {
         int csvItem = goods.getItem();
 
         try {
-            //new SearchGoods(csvArticular);
-
             // Если товара нет в наличии
             boolean availability = new CheckAvailability().checkGoodsPresent();
             boolean subscribe = false;
-            if (availability){
-                //subscribe = new MinToOrder().checkMinItemPresent();
+            if (availability) {
                 subscribe = new CheckAvailability().isPresentButtonToCart();
             }
-
             if (availability && subscribe) {
                 String getPrice = new GetPrice().getPrice();
                 // проверяем минимальное кол-во для заказа
@@ -58,11 +54,11 @@ public class SearchAndAdd {
                     errorSearch.add(noAdd);
                 }
             } else {
-                String[] noAdd = {csvName,csvArticular, "Товара нет в наличии"};
+                String[] noAdd = {csvName, csvArticular, "Товара нет в наличии"};
                 errorSearch.add(noAdd);
             }
         } catch (Exception e) {
-            String[] noAdd = {csvName,csvArticular, "Общая ошибка"};
+            String[] noAdd = {csvName, csvArticular, "Общая ошибка"};
             errorSearch.add(noAdd);
         }
     }

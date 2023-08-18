@@ -3,21 +3,22 @@ package org.example.txt;
 import org.example.TextLinks;
 import org.example.createPathFile.CreatePathFile;
 import org.example.createPathFile.Date;
-import org.example.txt.writeTxt.WriteTxtFile;
+import org.example.txt.writeTxt.WriteTxtReportFile;
 
 
-public class WriteTXT {
+public class WriteTxtReport {
 
-    public WriteTXT(String data) {
+    public WriteTxtReport(String data) {
 
         // создаем имя файла
         CreatePathFile createPathFile = new CreatePathFile();
-        TextLinks fileName = TextLinks.FILENAMESAVE;
-        String downloadsPath = createPathFile.createPathFile(fileName.getString(), "txt");
+        String fileName = TextLinks.FILENAMESAVE.getString();
+        String downloadsPath = createPathFile.createPathFile(fileName, "txt");
 
         Date date = new Date();
         String time = date.currentDate();
 
-        new WriteTxtFile(downloadsPath, time, data);
+        new WriteTxtReportFile(downloadsPath, time, data);
     }
+
 }

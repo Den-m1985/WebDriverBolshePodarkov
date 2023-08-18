@@ -1,8 +1,8 @@
 package org.example.searchAndAdd.addGood;
 
 import org.example.TextLinks;
-import org.example.browser.chrome.DriverChromeSingleton;
-import org.example.browser.chrome.XPathWait;
+import org.example.browser.chrome.DriverChrome;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -10,18 +10,17 @@ import org.openqa.selenium.interactions.Actions;
 public class AddGood {
 
     public AddGood(String goodsItem) {
-        XPathWait pathWait = new XPathWait();
-        WebDriver driver = DriverChromeSingleton.getChromeDriver();
+        WebDriver driver = DriverChrome.getChromeDriver();
 
         String linkString = TextLinks.ADDITEM.getString();
-        WebElement elementLocator = pathWait.xPathClassName(linkString);
+        WebElement elementLocator = driver.findElement(By.className(linkString));
 
         Actions actions = new Actions(driver);
         actions.doubleClick(elementLocator).perform();
         elementLocator.sendKeys(goodsItem);
 
         String linkAddItem = TextLinks.CLICKBAY.getString();
-        WebElement linkButton = pathWait.xPathClassName(linkAddItem);
+        WebElement linkButton = driver.findElement(By.className(linkAddItem));
         linkButton.click();
 
     }

@@ -7,16 +7,12 @@ public class LoginPasswordDialog {
     public LoginPasswordDialog() {
     }
 
-    public String[] enterLoginPassword(){
+    public String[] enterLoginPassword() {
 
         JTextField loginField = new JTextField();
         JPasswordField passwordField = new JPasswordField();
 
-        Object[] message = {
-                "Login:", loginField,
-                "Password:", passwordField
-        };
-
+        Object[] message = {"Login:", loginField, "Password:", passwordField};
         ImageIcon iconLogin = new ImageIcon(Objects.requireNonNull(getClass().getResource("/enter40.png")));
 
         int option = JOptionPane.showOptionDialog(null, message,
@@ -31,4 +27,5 @@ public class LoginPasswordDialog {
         }
         return null;
     }
+
 }

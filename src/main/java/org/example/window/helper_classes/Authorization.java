@@ -6,8 +6,7 @@ public class Authorization {
 
     public Authorization() throws Exception {
 
-        LoginPasswordDialog loginPasswordDialog = new LoginPasswordDialog();
-        String[] authorizationData = loginPasswordDialog.enterLoginPassword();
+        String[] authorizationData = new LoginPasswordDialog().enterLoginPassword();
 
         String login = authorizationData[0];
         String password = authorizationData[1];
@@ -15,6 +14,5 @@ public class Authorization {
         LoginStorage loginStorage = new LoginStorage();
         loginStorage.saveToFile(login, password);
     }
-
 
 }

@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.io.File;
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
 
 public class DriverChrome {
     private static WebDriver chromeDriver;
@@ -20,7 +20,7 @@ public class DriverChrome {
 
     private static WebDriver driverChrome() {
         String chromedriverPath = System.getProperty("user.home") + File.separator +
-                "chromedriver_win32" + "\\" + "chromedriver.exe";
+                "chromedriver_win32" + File.separator + "chromedriver.exe";
         System.setProperty("webdriver.chrome.driver", chromedriverPath);
 
         // установливаем зависимость, определяющую путь к chromedriver
@@ -37,7 +37,15 @@ public class DriverChrome {
         WebDriver driver = new ChromeDriver(options);
 
         //ожидание каждый раз когда выполняется команда на сайте
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+         /*
+        Таким образом, если элемент не найден, то драйвер будет ждать его появления
+        в течении заданного времени (10 секунд) и шагом в 500 мс.
+        Как только элемент будет найден, драйвер продолжит работу, однако,
+        в противном случае тест упадем по истечению времени
+         */
+        Duration duration = Duration.ofSeconds(10);
+        driver.manage().timeouts().implicitlyWait(duration);
+        //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         //driver.manage().window().fullscreen();
         return driver;
     }

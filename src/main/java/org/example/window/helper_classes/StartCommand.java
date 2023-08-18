@@ -1,7 +1,6 @@
 package org.example.window.helper_classes;
 
 import org.example.TextLinks;
-//import org.example.command.Command;
 import org.example.controller.Controller;
 import org.example.createPathFile.GetPathFile;
 
@@ -13,11 +12,8 @@ public class StartCommand implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
         String pathCSV = null;
-
         GetPathFile getPathFile = new GetPathFile();
-
         int i = 0;
         while (i < 2) {
             TextLinks extension = TextLinks.CSV;
@@ -28,19 +24,16 @@ public class StartCommand implements ActionListener {
         }
 
         System.out.println();
-        TextLinks textLinks = TextLinks.TEXTFILEOPEN;
-        System.out.println(textLinks.getString());
+        System.out.println(TextLinks.TEXTFILEOPEN.getString());
         System.out.println(pathCSV);
         System.out.println();
 
-
         try {
             new Controller(pathCSV);
-
         } catch (Exception ex) {
             throw new RuntimeException(ex);
         }
-        JOptionPane.showMessageDialog(null,"Успешно");
+        JOptionPane.showMessageDialog(null, "Успешно");
     }
 
 }

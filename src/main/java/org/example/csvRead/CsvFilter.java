@@ -3,28 +3,26 @@ package org.example.csvRead;
 import com.opencsv.exceptions.CsvException;
 import org.example.TextLinks;
 import org.example.csvRead.csv.*;
+import org.example.txt.GetNameFieldCSV;
 
 import java.io.IOException;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class CsvFilter {
-    private final String fileName;
     private List<String[]> error;
 
 
-    public CsvFilter(String fileName) {
-        this.fileName = fileName;
-    }
+    public List<StructureCSV> csvFilter(String fileName) throws IOException, CsvException {
 
-
-    public List<StructureCSV> csvFilter(int cellPrice, int cellItem) throws IOException, CsvException {
+        LinkedHashMap<String, Integer> cellCSV = new GetNameFieldCSV().getNameFieldCSV();
 
         CsvRead csvRead = new CsvRead(fileName);
         List<String[]> rows = csvRead.readCSV();
 
         // В этом блоке оставляем только те колонки где есть цена и кол-во
         OnlyGoods onlyGoods = new OnlyGoods();
-        List<StructureCSV> dataWithItem = onlyGoods.onlyGoods(rows, cellPrice,cellItem);
+        List<StructureCSV> dataWithItem = onlyGoods.onlyGoods(rows, cellCSV);
         error = onlyGoods.reportCSV();
 
         // этот блок возвращает иникальные элементы
@@ -38,6 +36,7 @@ public class CsvFilter {
 
         String textLinks = TextLinks.COUNROWSCSV.getString();
         System.out.println(textLinks + uniqueValues.size());
+        System.out.println();
 
         return uniqueValues;
     }
@@ -46,4 +45,5 @@ public class CsvFilter {
     public List<String[]> getError() {
         return error;
     }
+
 }

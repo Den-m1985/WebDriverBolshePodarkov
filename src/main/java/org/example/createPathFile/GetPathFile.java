@@ -19,8 +19,7 @@ public class GetPathFile {
         FileNameExtensionFilter filter = new FileNameExtensionFilter("files " + extension, extension);
         fileOpen.setFileFilter(filter);
 
-        TextLinks textLinks = TextLinks.OPENFILEPATH;
-        String defaultFolder = textLinks.getString();
+        String defaultFolder = TextLinks.OPENFILEPATH.getString();
 
         // open directory by default.
         fileOpen.setCurrentDirectory(new File(System.getProperty("user.home") + File.separator +
@@ -33,4 +32,5 @@ public class GetPathFile {
 
         return path;
     }
+
 }

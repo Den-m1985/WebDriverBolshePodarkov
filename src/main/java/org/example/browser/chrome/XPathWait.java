@@ -9,12 +9,12 @@ public class XPathWait extends WaitChrome {
     WebDriverWait wait = WaitChrome.getChromeDriverWait();
 
 
-    public WebElement xPathCssSelector(String str){
+    public WebElement xPathCssSelector(String str) {
         wait = WaitChrome.getChromeDriverWait();
         return wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(str)));
     }
 
-    public WebElement xPathClassName(String str){
+    public WebElement xPathClassName(String str) {
         wait = WaitChrome.getChromeDriverWait();
         return wait.until(ExpectedConditions.elementToBeClickable(By.className(str)));
     }
