@@ -2,12 +2,9 @@ package org.example.browser;
 
 import org.example.TextLinks;
 import org.example.authentication.LoginStorage;
-import org.example.browser.IsEnterAccount;
-import org.example.browser.chrome.DriverChrome;
+import org.example.browser.chrome.XPathWait;
 import org.example.window.helper_classes.Authorization;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 
 import javax.swing.*;
 
@@ -34,20 +31,26 @@ public class LoginPage {
 
 
     private void tryEnterAccount() throws Exception {
-        WebDriver driver = DriverChrome.getChromeDriver();
+        XPathWait pathWait = new XPathWait();
+        //WebDriver driver = DriverChrome.getChromeDriver();
+
+        Thread.sleep(8000);
+
         // field Login
         String LinksLogin = TextLinks.LOGINFIELD.getString();
-        WebElement loginField = driver.findElement(By.xpath(LinksLogin));
+        WebElement loginField = pathWait.xPath(LinksLogin);
+
+        //WebElement loginField = driver.findElement(By.xpath(LinksLogin));
         loginField.click();
         loginField.clear();
-
         String[] decryptedData = new LoginStorage().readFromFile();
         loginField.sendKeys(decryptedData[0]); // enter login
         decryptedData[0] = "";
 
         // field Password
         String LinksPassword = TextLinks.PASSWORDFIELD.getString();
-        WebElement passwordField = driver.findElement(By.xpath(LinksPassword));
+        WebElement passwordField = pathWait.xPath(LinksPassword);
+        //WebElement passwordField = driver.findElement(By.xpath(LinksPassword));
         passwordField.click();
         passwordField.clear();
         passwordField.sendKeys(decryptedData[1]);  // enter password
@@ -55,7 +58,8 @@ public class LoginPage {
 
         // field button enter
         String buttonEnter = TextLinks.BUTTONENTER.getString();
-        WebElement buttonEnterField = driver.findElement(By.xpath(buttonEnter));
+        WebElement buttonEnterField = pathWait.xPath(buttonEnter);
+        //WebElement buttonEnterField = driver.findElement(By.xpath(buttonEnter));
         buttonEnterField.click();
     }
 

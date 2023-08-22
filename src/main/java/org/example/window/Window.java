@@ -43,7 +43,7 @@ public class Window extends JFrame {
         int screenWidth = getToolkit().getScreenSize().width;
         int screenHeight = getToolkit().getScreenSize().height;
         // find coordinate window to set
-        int x = (screenWidth - getWidth()) / 2;
+        int x = (int)((screenWidth - getWidth())/1.1);
         int y = (screenHeight - getHeight()) / 2;
         setLocation(x, y);
     }

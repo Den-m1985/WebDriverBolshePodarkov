@@ -50,7 +50,11 @@ public class Controller {
 
         finish(time);
 
-        DriverChrome.getChromeDriver().close();
+        /*
+       Используем метод `quit()` вместо `close()`,
+       чтобы гарантировать полное закрытие драйвера и освобождение всех связанных с ним ресурсов
+         */
+        DriverChrome.getChromeDriver().quit();
 
     }
 
