@@ -1,11 +1,9 @@
 package org.example.csvRead;
 
-import com.opencsv.exceptions.CsvException;
 import org.example.TextLinks;
 import org.example.csvRead.csv.*;
 import org.example.txt.GetNameFieldCSV;
 
-import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -13,12 +11,11 @@ public class CsvFilter {
     private List<String[]> error;
 
 
-    public List<StructureCSV> csvFilter(String fileName) throws IOException, CsvException {
+    public List<StructureCSV> csvFilter(String fileName) {
 
         LinkedHashMap<String, Integer> cellCSV = new GetNameFieldCSV().getNameFieldCSV();
 
-        CsvRead csvRead = new CsvRead(fileName);
-        List<String[]> rows = csvRead.readCSV();
+        List<String[]> rows = new CsvRead().readCSV2(fileName, "windows-1251");
 
         // В этом блоке оставляем только те колонки где есть цена и кол-во
         OnlyGoods onlyGoods = new OnlyGoods();

@@ -15,14 +15,14 @@ public class OnlyGoods {
         List<StructureCSV> dataWithItem = new ArrayList<>();
         reportCSV = new ArrayList<>();
         for (String[] row : rows) {
-            // Бывает, что в исходнике некорректно сделана структура, эти позиции отправляются в итоговый отчет.
             try {
-                if (row[4].length() > 0) {
+                // Бывает, что в исходнике некорректно сделана структура, эти позиции отправляются в итоговый отчет.
+                if (row.length > cellCSV.size()) {
                     String[] error = {row[0], "Неверный формат CSV"};
                     reportCSV.add(error);
                 }
                 // Если в ячейке price и item число, то эту строку добавляем для дальнейшей работы.
-                if (isFigure(row[cellItem]) && isFigure(row[cellPrice])) {
+                else if (isFigure(row[cellItem]) && isFigure(row[cellPrice])) {
                     int price = floatToInt(row[cellPrice]);
                     int item = Integer.parseInt(row[cellItem]);
                     dataWithItem.add(new StructureCSV(row[0], row[1], price, item));
@@ -38,7 +38,7 @@ public class OnlyGoods {
     }
 
 
-    static boolean isFigure(String str) {
+    private boolean isFigure(String str) {
         if (str == null) {
             return false;
         }
@@ -51,7 +51,7 @@ public class OnlyGoods {
     }
 
 
-    static int floatToInt(String str) {
+    private int floatToInt(String str) {
         if (str.contains(",")) {
             String str2 = str.replace(",", ".");
             return (int) Float.parseFloat(str2);
