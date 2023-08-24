@@ -29,9 +29,11 @@ public class CreateOldExel {
 
         for (int i = 0; i < list.size(); i++) {
             Row row2 = sheet.createRow(i + 3);
+            int size = list.get(i).length;
             row2.createCell(0).setCellValue(list.get(i)[0]);
-            row2.createCell(2).setCellValue(list.get(i)[1]);
-            row2.createCell(3).setCellValue(list.get(i)[2]);
+            if (size > 2)
+                row2.createCell(2).setCellValue(list.get(i)[1]);
+            row2.createCell(3).setCellValue(list.get(i)[size - 1]);
         }
         return workbook;
     }
