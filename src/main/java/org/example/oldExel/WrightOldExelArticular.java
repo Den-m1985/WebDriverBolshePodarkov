@@ -14,12 +14,6 @@ public class WrightOldExelArticular {
     public WrightOldExelArticular(List<String[]> list) {
         int celSize = list.get(0).length;
 
-//        list.sort(new Comparator<String[]>() {
-//            @Override
-//            public int compare(String[] o1, String[] o2) {
-//                return o1[celSize - 1].compareTo(o2[celSize - 1]);
-//            }
-//        });
         list.sort(Comparator.comparing(o -> o[celSize - 1]));
 
         //create no find article
