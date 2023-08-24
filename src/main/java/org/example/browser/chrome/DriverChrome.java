@@ -1,6 +1,5 @@
 package org.example.browser.chrome;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -33,8 +32,6 @@ public class DriverChrome {
         // https://chromedriver.chromium.org/downloads
         String chromedriverPath = System.getProperty("user.home") + File.separator +
                 "chromedriver_win32" + File.separator + "chromedriver.exe";
-        //String chromedriverPath = System.getProperty("user.home") + File.separator +
-         //       "chromedriver-win64" + File.separator + "chromedriver.exe";
         System.setProperty("webdriver.chrome.driver", chromedriverPath);
 
         //https://peter.sh/experiments/chromium-command-line-switches/
@@ -43,8 +40,8 @@ public class DriverChrome {
         options.setPageLoadStrategy(PageLoadStrategy.EAGER); // ускорение загрузки сайта
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("--disable-notifications");
-        //options.addArguments("start-maximized");
         options.addArguments("--user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1309.0 Safari/537.17'");
+        options.addArguments("start-maximized");
 
         /*
         Опция `--no-sandbox` в настройках ChromeDriver отключает использование механизма песочницы (sandbox),
@@ -90,8 +87,8 @@ public class DriverChrome {
         в противном случае тест упадем по истечению времени
          */
         Duration duration = Duration.ofSeconds(10);
-
         driver.manage().timeouts().implicitlyWait(duration);
+
         return driver;
     }
 
