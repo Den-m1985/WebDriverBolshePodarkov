@@ -52,6 +52,10 @@ public class Window extends JFrame {
     private JTextArea textField() throws UnsupportedEncodingException {
         JTextArea textArea = new JTextArea();
         textArea.setBackground(new Color(220, 220, 220));  // background color
+
+        textArea.setLineWrap(true); // переносит текст если поле заполнено
+        textArea.setEditable(false);  // неизменяемый текст
+
         //  print text to text area
         String STDOUT_ENCODING = "windows-1251";
         PrintStream printStream = new PrintStream(new OutputStreamEncoding(textArea, STDOUT_ENCODING),
