@@ -30,9 +30,9 @@ public class DriverChrome {
         // установливаем зависимость, определяющую путь к chromedriver
         // https://googlechromelabs.github.io/chrome-for-testing/
         // https://chromedriver.chromium.org/downloads
-        String chromedriverPath = System.getProperty("user.home") + File.separator +
-                "chromedriver_win32" + File.separator + "chromedriver.exe";
-        System.setProperty("webdriver.chrome.driver", chromedriverPath);
+        //String chromedriverPath = System.getProperty("user.home") + File.separator +
+                //"chromedriver_win32" + File.separator + "chromedriver.exe";
+        //System.setProperty("webdriver.chrome.driver", chromedriverPath);
 
         //https://peter.sh/experiments/chromium-command-line-switches/
         ChromeOptions options = new ChromeOptions();
@@ -85,9 +85,11 @@ public class DriverChrome {
         в течении заданного времени (10 секунд) и шагом в 500 мс.
         Как только элемент будет найден, драйвер продолжит работу, однако,
         в противном случае тест упадем по истечению времени
+        https://www.selenium.dev/documentation/webdriver/waits/
          */
-        Duration duration = Duration.ofSeconds(10);
-        driver.manage().timeouts().implicitlyWait(duration);
+       //Duration duration = Duration.ofSeconds(10);
+        //driver.manage().timeouts().implicitlyWait(duration);
+        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
 
         return driver;
     }

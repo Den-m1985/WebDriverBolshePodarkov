@@ -5,7 +5,7 @@ import org.example.browser.LoginPage;
 import org.example.browser.OpenWebSite;
 import org.example.csvRead.CsvFilter;
 import org.example.csvRead.csv.StructureCSV;
-import org.example.oldExel.WrightOldExelArticular;
+import org.example.newExel.CreateReportExel;
 import org.example.searchAndAdd.Basket;
 import org.example.searchAndAdd.SearchAndAdd;
 import org.example.searchAndAdd.search.NameCity;
@@ -43,7 +43,8 @@ public class Controller {
         System.out.println("Размер отчета: " + reportList.size());
 
         if (reportList.size() != 0)
-            new WrightOldExelArticular(reportList);
+            new CreateReportExel(reportList);
+            //new WrightOldExelArticular(reportList);
 
         long end = System.nanoTime();
         long time = (end - start) / 1000000000;
