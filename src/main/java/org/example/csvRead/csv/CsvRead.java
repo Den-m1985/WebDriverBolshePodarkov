@@ -41,10 +41,11 @@ public class CsvRead {
 
     // delete double quotes if it's presents in the starts end in the end
     private String deleteQuotes(String str) {
-        if (str.startsWith("\"") && str.endsWith("\"")) {
-            str = str.substring(1, str.length() - 1);
-        }
-        return str;
+//        if (str.startsWith("\"") && str.endsWith("\"")) {
+//            str = str.substring(1, str.length() - 1);
+//        }
+//        return str;
+        return str.replace("\"\"", "\"");
     }
 
 }
