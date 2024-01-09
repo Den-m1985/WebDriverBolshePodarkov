@@ -8,7 +8,7 @@ public class OnlyGoods {
     private List<String[]> reportCSV;
 
 
-    public List<StructureCSV> onlyGoods(List<String[]> rows, LinkedHashMap<String, Integer>cellCSV) {
+    public List<StructureCSV> onlyGoods(List<String[]> rows, LinkedHashMap<String, Integer> cellCSV) {
         int cellPrice = cellCSV.get("Цена");
         int cellItem = cellCSV.get("Количество");
 
@@ -18,7 +18,7 @@ public class OnlyGoods {
             try {
                 // Бывает, что в исходнике некорректно сделана структура, эти позиции отправляются в итоговый отчет.
                 if (row.length > cellCSV.size()) {
-                    String[] error = {row[0], "Неверный формат CSV"};
+                    String[] error = {row[0], " ", "Неверный формат CSV"};
                     reportCSV.add(error);
                 }
                 // Если в ячейке price и item число, то эту строку добавляем для дальнейшей работы.
@@ -27,7 +27,8 @@ public class OnlyGoods {
                     int item = Integer.parseInt(row[cellItem]);
                     dataWithItem.add(new StructureCSV(row[0], row[1], price, item));
                 }
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
         }
         return dataWithItem;
     }
