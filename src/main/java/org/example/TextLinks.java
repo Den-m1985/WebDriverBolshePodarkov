@@ -1,11 +1,12 @@
 package org.example;
 
 public enum TextLinks {
-    ADDRESS("https://bolshepodarkov.ru/personal/profile/"),
-    BASKETADDRESS("https://bolshepodarkov.ru/personal/basket/"),  // поле открыть корзину.
-    LOGINFIELD("//form[@action='/personal/profile/?login=yes']//input[@name='USER_LOGIN']"),  // поле ввода логина
-    PASSWORDFIELD("//form[@action='/personal/profile/?login=yes']//input[@name='USER_PASSWORD']"),  //поле ввода пароля
-    BUTTONENTER("//form[@action='/personal/profile/?login=yes']//input[@name='Login']"),  // кпонка войти в аккаунт
+    ADDRESS("https://bolshepodarkov.ru/personal/profile/auth/login.php"), // login
+    BASKETADDRESS("https://bolshepodarkov.ru/personal/basket/"),  // field open basket.
+    LOGINFIELD("USER_LOGIN"),  // name email login
+    PASSWORDFIELD("USER_PASSWORD"),  // name password login
+    BUTTONENTER("Login"),  // name button enter account
+    ISENTERACCOUNT("header-main__wrappersonal-container-personal-name"),// is enter account
     NAMECITY("//div[@class='bxmaker__geoip__city__line-question-btn-yes js-bxmaker__geoip__city__line-question-btn-yes']"),
     SEARCHFIELD("search-title-input"),  //поле поиска
     BUTTONSEARCH("glyph-icon-loop"),  //поле кнопки поска
@@ -17,7 +18,6 @@ public enum TextLinks {
     CLICKBAY("catalog-section-item-purchase-buttons"),  //поле добавить в корзину
     BASKETITEM("basket-item"),  // поле товара в корзине
     CLEARBASKET("//span[contains(text(),'Очистить корзину')]"),// clear Basket
-    OUTBASKET("//div[contains(text(),'Выйти')]"),// out Basket
     OPENFILEPATH("Desktop"),  //открываем папку по умолчанию
     SAVEFILEPATH("Downloads"),  //сохраняем папку по умолчанию
     COUNROWSCSV("количество товаров в csv: "),

@@ -2,21 +2,29 @@ package org.example.browser;
 
 import org.example.TextLinks;
 import org.example.authentication.LoginStorage;
-import org.example.browser.chrome.XPathWait;
+import org.example.browser.chrome.DriverChrome;
 import org.example.window.helper_classes.Authorization;
 import org.openqa.selenium.*;
 
 import javax.swing.*;
 
 public class LoginPage {
+    private String login;
+    private CharSequence password;
 
 
     public LoginPage() throws Exception {
+        String[] decryptedData = new LoginStorage().readFromFile();
+        login = decryptedData[0];
+        password = decryptedData[1];
+        decryptedData[1] = "";
+
+        Thread.sleep(2000);
         int attempt = 3;
         while (attempt > 0) {
             try {
                 tryEnterAccount();
-                new IsEnterAccount().isEnterAccount();
+                new IsEnterAccount().isEnterAccount(login);
                 attempt = 0;
             } catch (Exception ignored) {
                 new Authorization();
@@ -31,35 +39,27 @@ public class LoginPage {
 
 
     private void tryEnterAccount() throws Exception {
-        XPathWait pathWait = new XPathWait();
-        //WebDriver driver = DriverChrome.getChromeDriver();
-
-        Thread.sleep(8000);
+        //XPathWait pathWait = new XPathWait();
+        WebDriver driver = DriverChrome.getChromeDriver();
 
         // field Login
         String LinksLogin = TextLinks.LOGINFIELD.getString();
-        WebElement loginField = pathWait.xPath(LinksLogin);
-
-        //WebElement loginField = driver.findElement(By.xpath(LinksLogin));
+        WebElement loginField = driver.findElement(By.name(LinksLogin));
         loginField.click();
         loginField.clear();
-        String[] decryptedData = new LoginStorage().readFromFile();
-        loginField.sendKeys(decryptedData[0]); // enter login
-        decryptedData[0] = "";
+        loginField.sendKeys(login);
 
         // field Password
         String LinksPassword = TextLinks.PASSWORDFIELD.getString();
-        WebElement passwordField = pathWait.xPath(LinksPassword);
-        //WebElement passwordField = driver.findElement(By.xpath(LinksPassword));
+        WebElement passwordField = driver.findElement(By.name(LinksPassword));
         passwordField.click();
         passwordField.clear();
-        passwordField.sendKeys(decryptedData[1]);  // enter password
-        decryptedData[1] = "";
+        passwordField.sendKeys(password);
+        password = "";
 
         // field button enter
         String buttonEnter = TextLinks.BUTTONENTER.getString();
-        WebElement buttonEnterField = pathWait.xPath(buttonEnter);
-        //WebElement buttonEnterField = driver.findElement(By.xpath(buttonEnter));
+        WebElement buttonEnterField = driver.findElement(By.name(buttonEnter));
         buttonEnterField.click();
     }
 
