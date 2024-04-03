@@ -40,7 +40,8 @@ public class SearchAndAdd {
             if (availability && subscribe) {
                 String getPrice = new GetPrice().getPrice();
                 // проверяем минимальное кол-во для заказа
-                boolean checkMinItem = new MinToOrder().checkMinItem(csvItem);
+                //boolean checkMinItem = new MinToOrder().checkMinItem(csvItem);
+                boolean checkMinItem = true;
                 if (checkMinItem) {
                     CheckPrice check = new CheckPrice();
                     // check the price between web and csv

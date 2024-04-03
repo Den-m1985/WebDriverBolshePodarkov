@@ -6,12 +6,12 @@ public enum TextLinks {
     LOGINFIELD("USER_LOGIN"),  // name email login
     PASSWORDFIELD("USER_PASSWORD"),  // name password login
     BUTTONENTER("Login"),  // name button enter account
-    ISENTERACCOUNT("header-main__wrappersonal-container-personal-name"),// is enter account
+    ISENTERACCOUNT("header-main__wrappersonal-container-personal-name"),// is entered account
     NAMECITY("//div[@class='bxmaker__geoip__city__line-question-btn-yes js-bxmaker__geoip__city__line-question-btn-yes']"),
-    SEARCHFIELD("search-title-input"),  //поле поиска
-    BUTTONSEARCH("glyph-icon-loop"),  //поле кнопки поска
-    NOGOODS("catalog-content"),  // поле отсутствия товара
-    TOBASKET("//span[contains(text(),'В корзину')]"),  // поле товара Подписаться
+    SEARCHFIELD("header-navigation__wrapsearch-container-form-input"),  // field search
+    BUTTONSEARCH("header-navigation__wrapsearch-container-form-button"),  // button field "search"
+    NOGOODS("//*[@id=\"i-5-bitrix-catalog-section-catalog-tile-3-OQ3k9PHlVICg\"]/div"),  // field with goods cart
+    TOBASKET("calalog-quantity"),  // button field "add to basket"
     PRICE("catalog-section-item-price-discount"),  // поле цены
     MINITEM("intec-ui-part-input"),  //поле мин кол-ва для заказа
     ADDITEM("intec-ui-part-input"),  //поле добавить кол-во

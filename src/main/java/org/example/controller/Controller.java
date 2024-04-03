@@ -31,7 +31,7 @@ public class Controller {
 
         new LoginPage();
 
-        new NameCity();
+       //new NameCity();
 
         new Basket();
 
