@@ -15,7 +15,8 @@ public class CheckAvailability {
         WebDriver driver = DriverChrome.getChromeDriver();
         String noFind = TextLinks.NOGOODS.getString();
         try {
-            List<WebElement> goodsArray = driver.findElements(By.xpath(noFind));
+            // смотрим сколько товаров
+            List<WebElement> goodsArray = driver.findElements(By.className("catalog-section-item-wrapper"));
             driver.findElement(By.xpath(noFind));
             return true;
         } catch (Exception e) {

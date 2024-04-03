@@ -1,5 +1,7 @@
 package org.example.searchAndAdd;
 
+import org.example.TextLinks;
+import org.example.browser.chrome.DriverChrome;
 import org.example.csvRead.csv.StructureCSV;
 import org.example.searchAndAdd.addGood.AddGood;
 import org.example.searchAndAdd.checkGood.CheckAvailability;
@@ -7,6 +9,9 @@ import org.example.searchAndAdd.checkGood.CheckPrice;
 import org.example.searchAndAdd.checkGood.GetPrice;
 import org.example.searchAndAdd.checkGood.MinToOrder;
 import org.example.searchAndAdd.search.SearchGoods;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +24,9 @@ public class SearchAndAdd {
         errorSearch = new ArrayList<>();
         for (StructureCSV product : data) {
             new SearchGoods(product.getArtucul());
+            boolean b = isOneProduct();
+            boolean c = isEnableToBuy();
+
             executeWebProcess(product);
         }
     }
@@ -62,6 +70,28 @@ public class SearchAndAdd {
             String[] noAdd = {csvName, csvArticular, "Общая ошибка"};
             errorSearch.add(noAdd);
         }
+    }
+
+
+    public boolean isOneProduct() {
+        WebDriver driver = DriverChrome.getChromeDriver();
+        try {
+            List<WebElement> goodsArray = driver.findElements(By.className("catalog-section-item-wrapper"));
+            return goodsArray.size() == 1;
+        } catch (Exception ignored) {
+        }
+        return false;
+    }
+
+    public boolean isEnableToBuy() {
+        WebDriver driver = DriverChrome.getChromeDriver();
+        try {
+            String toBasketString = TextLinks.TOBASKET.getString();
+            boolean a = driver.findElement(By.className(toBasketString)).isEnabled();
+            return true;
+        } catch (Exception ignored) {
+        }
+        return false;
     }
 
 
