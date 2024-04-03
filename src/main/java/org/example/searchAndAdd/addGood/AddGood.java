@@ -20,7 +20,7 @@ public class AddGood {
         elementLocator.sendKeys(goodsItem);
 
         String linkAddItem = TextLinks.CLICKBAY.getString();
-        WebElement linkButton = driver.findElement(By.className(linkAddItem));
+        WebElement linkButton = driver.findElement(By.xpath(linkAddItem));
         linkButton.click();
 
     }

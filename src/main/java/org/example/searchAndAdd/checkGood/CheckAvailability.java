@@ -16,7 +16,7 @@ public class CheckAvailability {
         String noFind = TextLinks.NOGOODS.getString();
         try {
             List<WebElement> goodsArray = driver.findElements(By.xpath(noFind));
-            driver.findElement(By.className(noFind));
+            driver.findElement(By.xpath(noFind));
             return true;
         } catch (Exception e) {
             return false;

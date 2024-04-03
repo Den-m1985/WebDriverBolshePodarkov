@@ -10,12 +10,12 @@ public enum TextLinks {
     NAMECITY("//div[@class='bxmaker__geoip__city__line-question-btn-yes js-bxmaker__geoip__city__line-question-btn-yes']"),
     SEARCHFIELD("header-navigation__wrapsearch-container-form-input"),  // field search
     BUTTONSEARCH("header-navigation__wrapsearch-container-form-button"),  // button field "search"
-    NOGOODS("//*[@id=\"i-5-bitrix-catalog-section-catalog-tile-3-OQ3k9PHlVICg\"]/div"),  // field with goods cart
+    NOGOODS("//*[@id=\"i-5-bitrix-catalog-section-catalog-tile-3-OQ3k9PHlVICg\"]"),  // field with goods cart
     TOBASKET("calalog-quantity"),  // button field "add to basket"
     PRICE("catalog-section-item-price-discount"),  // поле цены
     MINITEM("intec-ui-part-input"),  //поле мин кол-ва для заказа
-    ADDITEM("intec-ui-part-input"),  //поле добавить кол-во
-    CLICKBAY("catalog-section-item-purchase-buttons"),  //поле добавить в корзину
+    ADDITEM("calalog-quantity-container-input"),  //поле добавить кол-во
+    CLICKBAY("//*[@id=\"bx_3966226736_i-5-bitrix-catalog-section-catalog-tile-3-OQ3k9PHlVICg_60240\"]/div/div[2]/div[2]/a"),  //поле добавить в корзину
     BASKETITEM("basket-item"),  // поле товара в корзине
     CLEARBASKET("//span[contains(text(),'Очистить корзину')]"),// clear Basket
     OPENFILEPATH("Desktop"),  //открываем папку по умолчанию
