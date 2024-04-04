@@ -19,10 +19,9 @@ public class AddGood {
         actions.doubleClick(elementLocator).perform();
         elementLocator.sendKeys(goodsItem);
 
-        String linkAddItem = TextLinks.CLICKBAY.getString();
-        WebElement linkButton = driver.findElement(By.xpath(linkAddItem));
+        String linkAddItem = TextLinks.TOBASKET.getString();
+        WebElement linkButton = driver.findElement(By.className(linkAddItem));
         linkButton.click();
-
     }
 
 }

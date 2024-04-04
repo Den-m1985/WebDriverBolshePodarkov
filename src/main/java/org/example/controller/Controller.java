@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import org.example.DTO.DtoError;
 import org.example.browser.chrome.DriverChrome;
 import org.example.browser.LoginPage;
 import org.example.browser.OpenWebSite;
@@ -18,7 +19,7 @@ public class Controller {
     public Controller(String pathCSV) throws Exception {
         long start = System.nanoTime();
 
-        List<String[]> reportList = new ArrayList<>();
+        List<DtoError> reportList = new ArrayList<>();
 
         // Read csv
         CsvFilter csvFilter = new CsvFilter();
@@ -29,8 +30,6 @@ public class Controller {
         new OpenWebSite();
 
         new LoginPage();
-
-       //new NameCity();
 
         new Basket();
 

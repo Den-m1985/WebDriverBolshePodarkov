@@ -29,7 +29,7 @@ public class CheckAvailability {
         WebDriver driver = DriverChrome.getChromeDriver();
         String toBasketString = TextLinks.TOBASKET.getString();
         try {
-            driver.findElement(By.className(toBasketString)).isEnabled();
+            driver.findElement(By.className(toBasketString));
             return true;
         } catch (Exception e) {
             return false;

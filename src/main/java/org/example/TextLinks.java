@@ -16,7 +16,7 @@ public enum TextLinks {
     PRICE("catalog-section-item-price-discount"),  // поле цены
     MINITEM("intec-ui-part-input"),  //поле мин кол-ва для заказа
     ADDITEM("calalog-quantity-container-input"),  //поле добавить кол-во
-    CLICKBAY("//*[@id=\"bx_3966226736_i-5-bitrix-catalog-section-catalog-tile-3-OQ3k9PHlVICg_60240\"]/div/div[2]/div[2]/a"),  //поле добавить в корзину
+    CLICKBAY("calalog-quantity"),  //поле добавить в корзину
     BASKETITEM("basket-item"),  // поле товара в корзине
     CLEARBASKET("basket-items-panel-buttons"),// clear Basket
     OPENFILEPATH("Desktop"),  //открываем папку по умолчанию

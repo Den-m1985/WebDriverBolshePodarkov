@@ -16,7 +16,7 @@ public class CheckPrice {
 
 
     public DtoError getErrorPrice(StructureCSV product) {
-        return new DtoError("Цена на сайте больше на " + percent + "%", product);
+        return new DtoError(product.getName(), product.getArtucul(), "Цена на сайте больше на " + percent + "%");
         //return new String[]{goodsName, csvArticular, "Цена на сайте больше на " + percent + "%"};
     }
 

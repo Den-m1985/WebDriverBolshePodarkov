@@ -3,6 +3,7 @@ package org.example.newExel;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.example.DTO.DtoError;
 import org.example.TextLinks;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
 public class CreateExel {
 
 
-    public XSSFWorkbook createExel(List<String[]> list) {
+    public XSSFWorkbook createExel(List<DtoError> list) {
         XSSFWorkbook workbook = new XSSFWorkbook();
         String textSheet = TextLinks.SHEET.getString();
         Sheet sheet = workbook.createSheet(textSheet);
@@ -30,11 +31,9 @@ public class CreateExel {
 
         for (int i = 0; i < list.size(); i++) {
             Row row2 = sheet.createRow(i + 3);
-            int size = list.get(i).length;
-            row2.createCell(0).setCellValue(list.get(i)[0]);
-            if (size > 2)
-                row2.createCell(2).setCellValue(list.get(i)[1]);
-            row2.createCell(3).setCellValue(list.get(i)[size - 1]);
+            row2.createCell(0).setCellValue(list.get(i).getName());
+            row2.createCell(2).setCellValue(list.get(i).getArticular());
+            row2.createCell(3).setCellValue(list.get(i).getMessage());
         }
         return workbook;
     }

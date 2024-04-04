@@ -1,5 +1,6 @@
 package org.example.csvRead;
 
+import org.example.DTO.DtoError;
 import org.example.TextLinks;
 import org.example.csvRead.csv.*;
 import org.example.txt.GetNameFieldCSV;
@@ -8,7 +9,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 public class CsvFilter {
-    private List<String[]> error;
+    private List<DtoError> error;
 
 
     public List<StructureCSV> csvFilter(String fileName) {
@@ -39,7 +40,7 @@ public class CsvFilter {
     }
 
 
-    public List<String[]> getError() {
+    public List<DtoError> getError() {
         return error;
     }
 
