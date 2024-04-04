@@ -1,5 +1,8 @@
 package org.example.searchAndAdd.checkGood;
 
+import org.example.DTO.DtoError;
+import org.example.csvRead.csv.StructureCSV;
+
 public class CheckPrice {
     int percent;
 
@@ -12,8 +15,9 @@ public class CheckPrice {
     }
 
 
-    public String[] getErrorPrice(String goodsName, String csvArticular) {
-        return new String[]{goodsName, csvArticular, "Цена на сайте больше на " + percent + "%"};
+    public DtoError getErrorPrice(StructureCSV product) {
+        return new DtoError("Цена на сайте больше на " + percent + "%", product);
+        //return new String[]{goodsName, csvArticular, "Цена на сайте больше на " + percent + "%"};
     }
 
     private int floatToInt(String str) {

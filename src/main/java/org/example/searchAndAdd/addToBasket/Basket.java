@@ -1,9 +1,8 @@
-package org.example.searchAndAdd;
+package org.example.searchAndAdd.addToBasket;
 
 import org.example.TextLinks;
 import org.example.browser.chrome.DriverChrome;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -17,16 +16,15 @@ public class Basket {
     public Basket() {
         String basket = TextLinks.BASKETADDRESS.getString();
         driver.get(basket);
-        // если в корзине что-то есть запрашиваем дальнейшее дествие
+        // if basket have goods
         if (checkBasket() != 0) {
             int option = dialogClearBasket();
             if (option == 0) {
                 clearBasket();
-                // проверяем очистил ли корзину?
                 if (checkBasket() != 0) {
                     int errorOption = dialogErrorBasket();
                     if (errorOption == 0)
-                        DriverChrome.getChromeDriver().close();
+                        driver.close();
                 }
             }
         } else {
@@ -44,27 +42,17 @@ public class Basket {
 
 
     public void clearBasket() {
-       /*
-       выполняем JavaScript-скрипт с использованием `JavascriptExecutor`
-       чтобы прокрутить страницу до кнопки. Затем снова вызываем метод `click()`
-       для удаления товаров из корзины.
-       */
         String clearBasket = TextLinks.CLEARBASKET.getString();
-        WebElement removeItemButton = driver.findElement(By.xpath(clearBasket));
-
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView();", removeItemButton);
+        WebElement removeItemButton = driver.findElement(By.className(clearBasket));
         removeItemButton.click();
-
     }
 
 
     private int dialogClearBasket() {
-        // Создаем массив с текстом кнопок
         Object[] options = {"Очистить корзину", "Оставить"};
         String text = "В корзине есть товары";
 
-        // Отображаем окно с двумя кнопками
+        // window with 2 button
         int result = JOptionPane.showOptionDialog(null, text, "Вопрос",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
@@ -74,11 +62,10 @@ public class Basket {
 
 
     private int dialogErrorBasket() {
-        // Создаем массив с текстом кнопок
         Object[] options = {"Попробовать снова", "Продолжить"};
         String text = "В корзине есть товары";
 
-        // Отображаем окно с двумя кнопками
+        // window with 2 button
         int result = JOptionPane.showOptionDialog(null, text, "Вопрос",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE,

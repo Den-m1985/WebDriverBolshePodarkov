@@ -6,9 +6,8 @@ import org.example.browser.OpenWebSite;
 import org.example.csvRead.CsvFilter;
 import org.example.csvRead.csv.StructureCSV;
 import org.example.newExel.CreateReportExel;
-import org.example.searchAndAdd.Basket;
-import org.example.searchAndAdd.SearchAndAdd;
-import org.example.searchAndAdd.search.NameCity;
+import org.example.searchAndAdd.addToBasket.Basket;
+import org.example.searchAndAdd.ServiceAddToBasket;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +34,7 @@ public class Controller {
 
         new Basket();
 
-        SearchAndAdd searchAndAdd = new SearchAndAdd(data);
+        ServiceAddToBasket searchAndAdd = new ServiceAddToBasket(data);
         if (searchAndAdd.getErrorSearch() != null)
             reportList.addAll(searchAndAdd.getErrorSearch());
 

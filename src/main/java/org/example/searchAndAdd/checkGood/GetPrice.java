@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 public class GetPrice {
 
-    public String getPrice() {
+    public String getPriceFromWeb() {
         XPathWait pathWait = new XPathWait();
         //WebDriver driver = DriverChrome.getChromeDriver();
 

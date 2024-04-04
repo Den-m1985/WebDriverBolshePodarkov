@@ -1,4 +1,4 @@
-package org.example.searchAndAdd.addGood;
+package org.example.searchAndAdd.addToBasket;
 
 import org.example.TextLinks;
 import org.example.browser.chrome.DriverChrome;
