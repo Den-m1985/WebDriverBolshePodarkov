@@ -17,11 +17,9 @@ public class CreateReportExel {
         //create no find article
         XSSFWorkbook workbook = new CreateExel().createExel(list);
 
-        // create file name
-        CreatePathFile createPathFile = new CreatePathFile();
         //write no find article, xls file in downloads directory
         String fileName = TextLinks.FILENAMESAVE.getString();
-        String downloadsPath = createPathFile.createPathFile(fileName, "xlsx");
+        String downloadsPath =  new CreatePathFile().createPathFile(fileName, "xlsx");
 
         new WriteExelXlsx(workbook, downloadsPath);
 

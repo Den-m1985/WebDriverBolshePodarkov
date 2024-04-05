@@ -3,7 +3,6 @@ package org.example.txt;
 import org.example.TextLinks;
 import org.example.createPathFile.CreatePathFile;
 import org.example.createPathFile.Date;
-import org.example.txt.writeTxt.WriteTxtReportFile;
 
 
 public class WriteTxtReport {

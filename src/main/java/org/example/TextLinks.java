@@ -7,29 +7,28 @@ public enum TextLinks {
     PASSWORDFIELD("USER_PASSWORD"),  // name password login
     BUTTONENTER("Login"),  // name button enter account
     ISENTERACCOUNT("header-main__wrappersonal-container-personal-name"),// is entered account
-    NAMECITY("//div[@class='bxmaker__geoip__city__line-question-btn-yes js-bxmaker__geoip__city__line-question-btn-yes']"),
     SEARCHFIELD("header-navigation__wrapsearch-container-form-input"),  // field search
     BUTTONSEARCH("header-navigation__wrapsearch-container-form-button"),  // button field "search"
-    NOGOODS("//*[@id=\"i-5-bitrix-catalog-section-catalog-tile-3-OQ3k9PHlVICg\"]"),  // field with goods cart
     CARTFIELD("catalog-section-item-wrapper"),
-    TOBASKET("calalog-quantity"),  // button field "add to basket"
-    PRICE("catalog-section-item-price-discount"),  // поле цены
-    MINITEM("intec-ui-part-input"),  //поле мин кол-ва для заказа
-    ADDITEM("calalog-quantity-container-input"),  //поле добавить кол-во
-    CLICKBAY("calalog-quantity"),  //поле добавить в корзину
-    BASKETITEM("basket-item"),  // поле товара в корзине
+    TOBASKET("calalog-quantity"),  // button field "add to basket or subscribe"
+    PRICE("catalog-section-item-price-discount"),
+    MINITEM("intec-ui-part-input"),  // field to minimum to order
+    ADDITEM("calalog-quantity-container-input"),  // field add item to basket
+    BASKETITEM("basket-item"),  // field basket items
     CLEARBASKET("basket-items-panel-buttons"),// clear Basket
-    OPENFILEPATH("Desktop"),  //открываем папку по умолчанию
-    SAVEFILEPATH("Downloads"),  //сохраняем папку по умолчанию
+    SUBSCRIBE("Подписаться"),
+    OPENFILEPATH("Desktop"),  // open the default folder
+    SAVEFILEPATH("Downloads"),  // save report file
     COUNROWSCSV("количество товаров в csv: "),
-    SHEET("Sheet1"),  // имя страницы в отчете
+    SHEET("Sheet1"),
     NOARTICUL("Проверить эти товары"),
-    FILENAMESAVE("BolshePodarkov_Report"),  //имя файла с ненайденными артикулами
-    AUTHORIZATION("Documents\\AuthBolshePodarkov.txt"), //имя файла для хранения логина и пароля
+    FILENAMESAVE("BolshePodarkov_Report"),
+    AUTHORIZATION("Documents\\AuthBolshePodarkov.txt"), // file storage name with login
     TEXTSAVEFILE("Файл куда сохраняем ненайденные артикулы:"),
     TEXTFILEOPEN("Файл исходник:"),
     BASKETEMPTY("Корзина пуста"),
-    CSV("csv");
+    CSV("csv"),
+    USERHOME("user.home");
 
 
     private final String string;

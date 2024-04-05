@@ -12,7 +12,8 @@ public class CreatePathFile {
         String str = date.currentDate();
 
         String defaultFolder = TextLinks.SAVEFILEPATH.getString();
-        String joinFileName = System.getProperty("user.home") + File.separator +
+        String userHome = TextLinks.USERHOME.getString();
+        String joinFileName = System.getProperty(userHome) + File.separator +
                 defaultFolder + File.separator + fileName + "_" + str + "." + extension;
 
         return checkSameName(joinFileName);

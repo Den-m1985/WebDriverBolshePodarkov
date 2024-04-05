@@ -14,7 +14,7 @@ public class JMenuWindows {
     public JMenuBar createMenu(JTextArea data) {
         JMenuBar menuBar = new JMenuBar();
         menuBar.add(extraMenu(data));
-        menuBar.add(createCSVMenu());
+        //menuBar.add(createCSVMenu());
         return menuBar;
     }
 

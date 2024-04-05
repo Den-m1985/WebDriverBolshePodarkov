@@ -3,9 +3,7 @@ package org.example.csvRead;
 import org.example.DTO.DtoError;
 import org.example.TextLinks;
 import org.example.csvRead.csv.*;
-import org.example.txt.GetNameFieldCSV;
 
-import java.util.LinkedHashMap;
 import java.util.List;
 
 public class CsvFilter {
@@ -14,13 +12,11 @@ public class CsvFilter {
 
     public List<StructureCSV> csvFilter(String fileName) {
 
-        LinkedHashMap<String, Integer> cellCSV = new GetNameFieldCSV().getNameFieldCSV();
-
         List<String[]> rows = new CsvRead().readCSV2(fileName, "windows-1251");
 
         // В этом блоке оставляем только те колонки где есть цена и кол-во
         OnlyGoods onlyGoods = new OnlyGoods();
-        List<StructureCSV> dataWithItem = onlyGoods.onlyGoods(rows, cellCSV);
+        List<StructureCSV> dataWithItem = onlyGoods.onlyGoods(rows);
         error = onlyGoods.reportCSV();
 
         // этот блок возвращает иникальные элементы

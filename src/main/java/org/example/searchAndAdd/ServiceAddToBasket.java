@@ -55,7 +55,7 @@ public class ServiceAddToBasket {
             boolean boolPrice = check.checkPrice(csvPrice, priceFromWeb);
             if (boolPrice) {
                 // If all is well, then add the product to the cart
-                new AddGood(String.valueOf(csvItem));
+                new AddGood(product);
             } else {
                 errorMessages.add(check.getErrorPrice(product));
             }

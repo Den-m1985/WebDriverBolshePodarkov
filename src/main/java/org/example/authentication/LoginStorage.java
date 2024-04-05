@@ -2,7 +2,7 @@ package org.example.authentication;
 
 import org.example.TextLinks;
 import org.example.txt.WriteTxt;
-import org.example.txt.writeTxt.ReadTxtFile;
+import org.example.txt.ReadTxtFile;
 
 import javax.crypto.spec.SecretKeySpec;
 import java.io.File;

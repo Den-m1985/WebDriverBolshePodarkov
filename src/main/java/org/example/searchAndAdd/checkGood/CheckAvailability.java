@@ -6,31 +6,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.util.List;
 
 public class CheckAvailability {
-
-
-    public boolean checkGoodsPresent() {
-        WebDriver driver = DriverChrome.getChromeDriver();
-        String noFind = TextLinks.NOGOODS.getString();
-        try {
-            // смотрим сколько товаров
-            List<WebElement> goodsArray = driver.findElements(By.className("catalog-section-item-wrapper"));
-            driver.findElement(By.xpath(noFind));
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
 
 
     public boolean isPresentButtonToCart() {
         WebDriver driver = DriverChrome.getChromeDriver();
         String toBasketString = TextLinks.TOBASKET.getString();
         try {
-            driver.findElement(By.className(toBasketString));
-            return true;
+            WebElement button = driver.findElement(By.className(toBasketString));
+            String str = button.getText();
+            String subscribe = TextLinks.SUBSCRIBE.getString();
+            return !str.equals(subscribe);
         } catch (Exception e) {
             return false;
         }

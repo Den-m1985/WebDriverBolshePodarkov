@@ -19,13 +19,9 @@ public class Controller {
     public Controller(String pathCSV) throws Exception {
         long start = System.nanoTime();
 
-        List<DtoError> reportList = new ArrayList<>();
-
-        // Read csv
         CsvFilter csvFilter = new CsvFilter();
         List<StructureCSV> data = csvFilter.csvFilter(pathCSV);
-        if (csvFilter.getError() != null)
-            reportList.addAll(csvFilter.getError());
+        List<DtoError> reportList = new ArrayList<>(csvFilter.getError());
 
         new OpenWebSite();
 
@@ -34,15 +30,13 @@ public class Controller {
         new Basket();
 
         ServiceAddToBasket searchAndAdd = new ServiceAddToBasket(data);
-        if (searchAndAdd.getErrorSearch() != null)
-            reportList.addAll(searchAndAdd.getErrorSearch());
+        reportList.addAll(searchAndAdd.getErrorSearch());
 
         System.out.println();
         System.out.println("Размер отчета: " + reportList.size());
 
         if (reportList.size() != 0)
             new CreateReportExel(reportList);
-            //new WrightOldExelArticular(reportList);
 
         long end = System.nanoTime();
         long time = (end - start) / 1000000000;
@@ -54,7 +48,6 @@ public class Controller {
        чтобы гарантировать полное закрытие драйвера и освобождение всех связанных с ним ресурсов
          */
         DriverChrome.getChromeDriver().quit();
-
     }
 
 

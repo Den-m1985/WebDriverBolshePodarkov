@@ -1,4 +1,4 @@
-package org.example.txt.writeTxt;
+package org.example.txt;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

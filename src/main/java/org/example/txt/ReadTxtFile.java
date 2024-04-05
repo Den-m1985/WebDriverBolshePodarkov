@@ -1,4 +1,4 @@
-package org.example.txt.writeTxt;
+package org.example.txt;
 
 import org.example.txt.WriteTxt;
 

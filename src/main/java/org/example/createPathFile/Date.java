@@ -5,11 +5,6 @@ import java.time.format.DateTimeFormatter;
 
 public class Date {
 
-    public Date() {
-
-    }
-
-
     public String currentDate() {
 
         LocalDate currentDate = LocalDate.now();

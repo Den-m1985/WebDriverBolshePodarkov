@@ -8,12 +8,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class XPathWait extends WaitChrome {
     WebDriverWait wait = WaitChrome.getChromeDriverWait();
 
-
-    public WebElement xPath(String str) {
-        wait = WaitChrome.getChromeDriverWait();
-        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath(str)));
-    }
-
     public WebElement xPathClassName(String str) {
         wait = WaitChrome.getChromeDriverWait();
         return wait.until(ExpectedConditions.elementToBeClickable(By.className(str)));

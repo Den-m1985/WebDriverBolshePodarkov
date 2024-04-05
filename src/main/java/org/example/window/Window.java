@@ -1,7 +1,7 @@
 package org.example.window;
 
 import org.example.TextLinks;
-import org.example.txt.writeTxt.ReadTxtFile;
+import org.example.txt.ReadTxtFile;
 import org.example.window.helper_classes.ButtonStart;
 import org.example.window.helper_classes.JMenuWindows;
 import org.example.window.helper_classes.OutputStreamEncoding;
@@ -28,7 +28,7 @@ public class Window extends JFrame {
 
         add(new JScrollPane(textArea), BorderLayout.CENTER);  // create text field
 
-        add(readDataFromCsvFile(), BorderLayout.SOUTH); // structure CSV
+        //add(readDataFromCsvFile(), BorderLayout.SOUTH); // structure CSV
 
         setVisible(true);
 

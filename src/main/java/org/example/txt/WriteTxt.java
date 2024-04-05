@@ -1,7 +1,5 @@
 package org.example.txt;
 
-import org.example.txt.writeTxt.ReadTxtFile;
-
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;

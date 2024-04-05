@@ -9,7 +9,7 @@ import org.openqa.selenium.*;
 import javax.swing.*;
 
 public class LoginPage {
-    private String login;
+    private final String login;
     private CharSequence password;
 
 
@@ -38,8 +38,7 @@ public class LoginPage {
     }
 
 
-    private void tryEnterAccount() throws Exception {
-        //XPathWait pathWait = new XPathWait();
+    private void tryEnterAccount() {
         WebDriver driver = DriverChrome.getChromeDriver();
 
         // field Login
