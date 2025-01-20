@@ -1,7 +1,5 @@
 package org.example.DTO;
 
-import org.example.csvRead.csv.StructureCSV;
-
 import java.lang.reflect.Field;
 
 public class DtoError {

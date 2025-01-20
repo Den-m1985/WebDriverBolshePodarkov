@@ -1,6 +1,6 @@
 package org.example;
 
-import org.example.window.Window;
+import org.example.ui.Window;
 
 import java.io.IOException;
 
