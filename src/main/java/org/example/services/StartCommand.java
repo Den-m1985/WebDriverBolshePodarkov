@@ -3,6 +3,8 @@ package org.example.services;
 import org.example.enums.TextLinks;
 import org.example.services.controller.Controller;
 import org.example.services.createPathFile.GetPathFile;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -46,6 +48,7 @@ public class StartCommand implements ActionListener {
         System.out.println();
         System.out.println("_________Попей чайку_________");
         System.out.println();
+        JOptionPane.showMessageDialog(null, "Успешно");
     }
 
     private void printText(String pathCSV) {
