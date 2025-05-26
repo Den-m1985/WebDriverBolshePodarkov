@@ -27,7 +27,7 @@ public class ServiceAddToBasket {
                                     "Неправильный артикул или имя"));
                     case 1 -> executeToBuy(product);
                     default -> {
-                        if (countProduct > 2) {
+                        if (countProduct >= 2) {
                             errorMessages.add(new DtoError(product.getName(), product.getArticular(),
                                     "Товаров больше чем 1"));
                         }

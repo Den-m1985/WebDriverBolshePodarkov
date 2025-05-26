@@ -18,6 +18,13 @@ public class AddGood {
 
         Actions actions = new Actions(driver);
         actions.doubleClick(elementLocator).perform();
+
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
         String goodsItem = String.valueOf(product.getItem());
         elementLocator.sendKeys(goodsItem);
 

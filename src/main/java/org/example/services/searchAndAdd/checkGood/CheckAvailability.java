@@ -1,18 +1,22 @@
 package org.example.services.searchAndAdd.checkGood;
 
 import org.example.enums.TextLinks;
-import org.example.services.browser.chrome.DriverChrome;
+import org.example.services.browser.chrome.WaitChrome;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CheckAvailability {
 
     public boolean isPresentButtonToCart() {
-        WebDriver driver = DriverChrome.getChromeDriver();
+        WebDriverWait waitChrome = WaitChrome.getChromeDriverWait();
+
         String toBasketString = TextLinks.TO_BASKET.getString();
         try {
-            WebElement button = driver.findElement(By.className(toBasketString));
+            WebElement button = waitChrome.until(
+                    ExpectedConditions.elementToBeClickable(By.className(toBasketString))
+            );
             String str = button.getText();
             String subscribe = TextLinks.SUBSCRIBE.getString();
             return !str.equals(subscribe);
